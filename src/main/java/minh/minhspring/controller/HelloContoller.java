@@ -25,7 +25,7 @@ public class HelloContoller {
     }
 
     @GetMapping("hello-string")
-    @ResponseBody
+    @ResponseBody // http body에 데이터를 직접 넣어준다. (view 가 없음, 소스보기 해도 hello spring 만 출력)
     public String helloString(@RequestParam("name") String name) {
         // http://localhost:8080/hello-string?name=spring!
         // 연결된 html 페이지 없어도 "hello spring!"출력 가능
