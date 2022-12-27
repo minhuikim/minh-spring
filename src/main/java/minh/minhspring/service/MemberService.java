@@ -3,18 +3,29 @@ package minh.minhspring.service;
 import minh.minhspring.domain.Member;
 import minh.minhspring.repository.MemberRepository;
 import minh.minhspring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service    // 스프링이 올라올 때 서비스로 등록
+@Component  // @Service에 포함되어있음
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
     // Service 에서 repository 직접 사용하지 않고 외부에서 해당 repository 입력하여 사용
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
+    // Autowired
+    // 스프링 생성 시 MemberService 는 MemberRepository 가 필요한데,
+    // Autowired 가 되어있으면 MemberService 를 스프링이 생성할 때
+    // @Service를 스프링 컨테이너에 등록하고, 생성자를 호출한다.
+    // 호출 시 Autowired가 있으면 MemberRepository를 MemberService에 자동으로 주입해준다.
 
     /**
      * 회원가입
