@@ -1,8 +1,8 @@
 package minh.minhspring.repository;
 
 import minh.minhspring.domain.Member;
+import minh.minhspring.domain.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 

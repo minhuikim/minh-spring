@@ -1,23 +1,19 @@
 package minh.minhspring.service;
 
 import minh.minhspring.domain.Member;
-import minh.minhspring.repository.MemberRepository;
-import minh.minhspring.repository.MemoryMemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+import minh.minhspring.domain.repository.MemberRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service    // 스프링이 올라올 때 서비스로 등록
-@Component  // @Service에 포함되어있음
+//@Service    // 스프링이 올라올 때 서비스로 등록
+//@Component  // @Service에 포함되어있음
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
     // Service 에서 repository 직접 사용하지 않고 외부에서 해당 repository 입력하여 사용
-    @Autowired
+//    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
@@ -59,7 +55,7 @@ public class MemberService {
     /**
      * 전체 회원 조회
      * */
-    public List<Member> findMember() {
+    public List<Member> findMembers() {
         return memberRepository.findAll();
     }
 

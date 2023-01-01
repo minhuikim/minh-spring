@@ -1,13 +1,12 @@
-package minh.minhspring.repository;
+package minh.minhspring.domain.repository;
 
 import minh.minhspring.domain.Member;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
 // Controller -> Service -> Repository(저장)
-@Repository
+//@Repository
 public class MemoryMemberRepository implements MemberRepository {
 
     // <id type, Member>
