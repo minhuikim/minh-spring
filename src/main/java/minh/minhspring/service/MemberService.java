@@ -1,13 +1,15 @@
 package minh.minhspring.service;
 
 import minh.minhspring.domain.Member;
-import minh.minhspring.domain.repository.MemberRepository;
+import minh.minhspring.repository.MemberRepository;
 
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 //@Service    // 스프링이 올라올 때 서비스로 등록
 //@Component  // @Service에 포함되어있음
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;

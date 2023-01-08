@@ -1,4 +1,4 @@
-package minh.minhspring.domain.repository;
+package minh.minhspring.repository;
 
 import minh.minhspring.domain.Member;
 

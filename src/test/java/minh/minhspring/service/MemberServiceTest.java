@@ -1,7 +1,7 @@
 package minh.minhspring.service;
 
 import minh.minhspring.domain.Member;
-import minh.minhspring.domain.repository.MemoryMemberRepository;
+import minh.minhspring.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
