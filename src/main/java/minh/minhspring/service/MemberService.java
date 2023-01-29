@@ -7,44 +7,33 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-//@Service    // 스프링이 올라올 때 서비스로 등록
-//@Component  // @Service에 포함되어있음
 @Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    // Service 에서 repository 직접 사용하지 않고 외부에서 해당 repository 입력하여 사용
 //    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
-    // Autowired
-    // 스프링 생성 시 MemberService 는 MemberRepository 가 필요한데,
-    // Autowired 가 되어있으면 MemberService 를 스프링이 생성할 때
-    // @Service를 스프링 컨테이너에 등록하고, 생성자를 호출한다.
-    // 호출 시 Autowired가 있으면 MemberRepository를 MemberService에 자동으로 주입해준다.
 
     /**
      * 회원가입
      * */
     public Long join(Member member) {
-        // 같은 이름이 있는 중복 회원 X
-//        Optional<Member> result = memberRepository.findByName(member.getName());
-//        result.ifPresent(m -> {
-//            throw new IllegalStateException("이미 존재하는 회원입니다.");
-//        });
 
-        //  Optional 을 사용하지 않고 바로 코드작성 가능
-//        memberRepository.findByName(member.getName())
-//            .ifPresent(m -> {
-//                throw new IllegalStateException("이미 존재하는 회원입니다.");
-//            });
+        // AOP를 사용하지 않고 메소드 실행 시간 출력 (모든 메소드에 실행시간 출력 로직 추가)
+        long start = System.currentTimeMillis();
 
-        //  메소드로 작성하여 사용
-        validateDuplicateMember(member);    // 중복 회원 검증
-        memberRepository.save(member);
-        return member.getId();
+        try {
+            validateDuplicateMember(member);    // 중복 회원 검증
+            memberRepository.save(member);
+            return member.getId();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("join = " + timeMs + "ms"); // join = 3ms 출력
+        }
     }
 
     private void validateDuplicateMember(Member member) {
